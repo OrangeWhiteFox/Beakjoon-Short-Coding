@@ -1,0 +1,23 @@
+'''
+파이썬 532자
+두 직선을 매개변수 0<=t<=1에 대한 좌표식으로 바꾸고, 이의 교점 공식을 만들어서 응용
+일반적으로 사용하는 CCW를 이용한 방법이 아니지만 귀찮을 뿐이지 유도는 어렵지 않다
+'''
+X=lambda:map(int,input().split())
+def P(z):print(z)
+a,b,c,d=X();e,f,g,h=X();A=(f-b)*(c-a)-(e-a)*(d-b);B=(g-e)*(d-b)-(h-f)*(c-a);C=(b-f)*(g-e)-(a-e)*(h-f)
+if A==0 and (c-a)*(h-b)==(d-b)*(g-a):
+ if a==c:a,b,c,d,e,f,g,h=b,a,d,c,f,e,h,g
+ if max(a,c)<min(e,g) or min(a,c)>max(e,g):P(0)
+ elif max(e,g)==min(a,c):
+  P(1)
+  if e>g:print(e,f)
+  else:print(g,h)
+ elif max(a,c)==min(e,g):
+  P(1)
+  if a>c:print(a,b)
+  else:print(c,d)
+ else:P(1)
+elif B==0:P(0)
+elif 0<=A*B<=B*B and 0<=-C*B<=B*B:P(1);print((a-c)*(C/B)+a,(b-d)*(C/B)+b)
+else:P(0)
