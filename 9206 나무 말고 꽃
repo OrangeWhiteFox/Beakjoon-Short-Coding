@@ -1,0 +1,12 @@
+'''
+파이썬 229자
+풀이 방법은 사다리꼴 공식 적용
+decimal모듈과 심프슨 공식을 안 써도 풀려서 짧게 줄일 수 있었음
+'''
+u=lambda:map(float,input().split())
+v,n=u();N=6**8;R=[]
+for i in range(int(n)):
+ a,b,h=u();s=0;l=h/N;F=a*a
+ for j in range(N):x=j*l+l;G=(a*2.71828182**-x**2+b*x**0.5)**2;s+=F+G;F=G
+ R+=[[abs(v-1.57079633*l*s),i]]
+print(min(R)[1])
