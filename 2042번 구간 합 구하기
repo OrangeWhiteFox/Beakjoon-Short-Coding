@@ -1,0 +1,16 @@
+'''
+파이썬 254자
+원래 세그먼트 트리의 기본형 문제인데 어쩌다 딕셔너리로 풀었다 이게 왜 되지?
+'''
+v=lambda:map(int,input().split())
+n,m,k=v()
+s,d=[0],{}
+while n:s+=[int(input())+s[-1]];n-=1
+while m+k:
+	a,b,c=v();m-=1
+	if a<2:d[b]=c-s[b]+s[b-1]
+	else:
+		l=list(d.items());S=s[c]-s[b-1]
+		for i in range(len(l)):
+			if b<=l[i][0]<=c:S+=l[i][1]
+		print(S)
